@@ -14,5 +14,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run Copilot review
-        uses: github/copilot-review@v1
+        uses: github/copilot-reviewer@v1
 

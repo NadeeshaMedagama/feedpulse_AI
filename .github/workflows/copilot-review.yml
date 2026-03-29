@@ -13,6 +13,8 @@ jobs:
     if: ${{ !github.event.pull_request.draft }}
     runs-on: ubuntu-latest
     steps:
-      - name: Run Copilot review
-        uses: github/copilot-reviewer@v1
+      - name: Copilot review is configured in GitHub settings
+        run: |
+          echo "No marketplace action is required for Copilot code review."
+          echo "Enable/verify Copilot code review in repository or organization settings."
 

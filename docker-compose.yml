@@ -1,0 +1,90 @@
+
+services:
+  frontend:
+    build: ./frontend
+    ports:
+      - "3030:3030"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:4000
+    depends_on:
+      gateway:
+        condition: service_healthy
+
+  gateway:
+    build: ./services/gateway
+    ports:
+      - "4000:4000"
+    environment:
+      - PORT=4000
+      - JWT_SECRET=${JWT_SECRET}
+      - FEEDBACK_SERVICE_URL=http://feedback-service:4002
+      - AUTH_SERVICE_URL=http://auth-service:4001
+    depends_on:
+      feedback-service:
+        condition: service_healthy
+      auth-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:4000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  auth-service:
+    build: ./services/auth-service
+    ports:
+      - "4001:4001"
+    environment:
+      - PORT=4001
+      - ADMIN_EMAIL=${ADMIN_EMAIL}
+      - ADMIN_PASSWORD=${ADMIN_PASSWORD}
+      - JWT_SECRET=${JWT_SECRET}
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:4001/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  feedback-service:
+    build: ./services/feedback-service
+    ports:
+      - "4002:4002"
+    environment:
+      - PORT=4002
+      - MONGO_URI=${MONGO_URI_DOCKER}
+      - MONGO_CONNECT_RETRIES=20
+      - AI_SERVICE_URL=http://ai-service:4003
+    depends_on:
+      mongo:
+        condition: service_started
+      ai-service:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:4002/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+
+  ai-service:
+    build: ./services/ai-service
+    ports:
+      - "4003:4003"
+    environment:
+      - PORT=4003
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - GEMINI_MODEL=gemini-2.5-flash
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:4003/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  mongo:
+    image: mongo:7
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

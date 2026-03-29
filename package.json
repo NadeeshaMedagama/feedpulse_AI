@@ -1,0 +1,23 @@
+{
+  "name": "feedpulse-ai",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FeedPulse - AI powered product feedback platform (microservices)",
+  "workspaces": [
+    "frontend",
+    "services/gateway",
+    "services/auth-service",
+    "services/feedback-service",
+    "services/ai-service"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace services/auth-service\" \"npm run dev --workspace services/ai-service\" \"npm run dev --workspace services/feedback-service\" \"npm run dev --workspace services/gateway\" \"npm run dev --workspace frontend\"",
+    "dev:backend": "concurrently \"npm run dev --workspace services/auth-service\" \"npm run dev --workspace services/ai-service\" \"npm run dev --workspace services/feedback-service\" \"npm run dev --workspace services/gateway\"",
+    "build": "npm run build --workspace frontend",
+    "start": "concurrently \"npm run start --workspace services/auth-service\" \"npm run start --workspace services/ai-service\" \"npm run start --workspace services/feedback-service\" \"npm run start --workspace services/gateway\" \"npm run start --workspace frontend\"",
+    "test": "npm run test --workspaces --if-present"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

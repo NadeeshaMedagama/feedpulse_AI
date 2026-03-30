@@ -27,7 +27,7 @@ jobs:
       - name: Update dependencies
         run: npm update --workspaces --include-workspace-root
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v8
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: chore/dependency-updates

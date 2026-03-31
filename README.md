@@ -222,9 +222,37 @@ python3 scripts/smoke_test.py
 
 ## Submission screenshots
 
-Include at least:
-1. Public feedback page with success message.
-2. Admin dashboard with filters, sentiment badges, stats, and pagination.
+Below are key project snapshots from `assets/` with short context.
+
+### 1) Public feedback submission page
+Main public form where users can submit feedback.
+
+![Public feedback submission page](assets/img01.png)
+
+### 2) Dark theme feedback submission page
+Dark mode view of the same public feedback form.
+
+![Dark theme feedback submission page](assets/img02.png)
+
+### 3) Test case passing snapshot
+Sample output showing successful test execution.
+
+![Test case passing snapshot](assets/img03.png)
+
+### 4) Admin table with status actions
+Admin table view with status updates and action buttons.
+
+![Admin table with status actions](assets/img04.png)
+
+### 5) Filters, search, and sorting
+Dashboard controls for quick feedback triage.
+
+![Filters, search, and sorting](assets/img05.png)
+
+### 6) Docker Compose build snapshot
+Build output from running services with Docker Compose.
+
+![Docker Compose build snapshot](assets/img06.png)
 
 ## What I would build next
 - Queue-based async AI processing (BullMQ + Redis)

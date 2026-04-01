@@ -1,0 +1,72 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels: ["dependencies"]
+    groups:
+      npm-deps:
+        patterns: ["*"]
+  - package-ecosystem: "npm"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels: ["dependencies"]
+  - package-ecosystem: "npm"
+    directory: "/services/gateway"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels: ["dependencies"]
+  - package-ecosystem: "npm"
+    directory: "/services/auth-service"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels: ["dependencies"]
+  - package-ecosystem: "npm"
+    directory: "/services/feedback-service"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels: ["dependencies"]
+  - package-ecosystem: "npm"
+    directory: "/services/ai-service"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 10
+    labels: ["dependencies"]
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies"]
+  - package-ecosystem: "docker"
+    directory: "/frontend"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies"]
+  - package-ecosystem: "docker"
+    directory: "/services/gateway"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies"]
+  - package-ecosystem: "docker"
+    directory: "/services/auth-service"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies"]
+  - package-ecosystem: "docker"
+    directory: "/services/feedback-service"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies"]
+  - package-ecosystem: "docker"
+    directory: "/services/ai-service"
+    schedule:
+      interval: "weekly"
+    labels: ["dependencies"]
+

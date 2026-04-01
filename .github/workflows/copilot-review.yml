@@ -1,0 +1,20 @@
+name: Copilot Code Review
+
+on:
+  pull_request:
+    types: ["opened", "synchronize", "reopened", "ready_for_review"]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  copilot-review:
+    if: ${{ !github.event.pull_request.draft }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Copilot review is configured in GitHub settings
+        run: |
+          echo "No marketplace action is required for Copilot code review."
+          echo "Enable/verify Copilot code review in repository or organization settings."
+

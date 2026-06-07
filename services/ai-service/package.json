@@ -14,7 +14,7 @@
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "helmet": "^8.2.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.11.0"
   },
   "devDependencies": {
     "jest": "^30.4.2"

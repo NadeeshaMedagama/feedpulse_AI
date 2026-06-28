@@ -13,13 +13,13 @@
     "cors": "^2.8.5",
     "express": "^5.2.1",
     "helmet": "^8.2.0",
-    "mongoose": "^9.7.1",
+    "mongoose": "^9.7.3",
     "morgan": "^1.11.0"
   },
   "devDependencies": {
     "jest": "^30.4.2",
     "mongodb-memory-server": "^11.2.0",
-    "nock": "^14.0.15",
+    "nock": "^14.0.16",
     "supertest": "^7.0.0"
   }
 }
